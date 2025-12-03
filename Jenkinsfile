@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './mvnw clean package -DskipTests'  # Más rápido
+                sh './mvnw clean package -DskipTests'
             }
         }
 
@@ -24,10 +24,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ App desplegada: http://localhost:8080'
+            echo ' App desplegada: http://localhost:8080'
         }
         failure {
-            echo '❌ Deploy falló'
+            echo ' Deploy falló'
             sh 'docker-compose -f docker-compose.app.yml logs --tail=50'
         }
     }
